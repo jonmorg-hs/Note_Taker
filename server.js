@@ -63,8 +63,7 @@ app.delete("/api/notes/:id", function (req, res) {
   });
 });
 
-// Express Server
-// Listening on port 3000
+// Express Server Listeners
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Started server`);
 });
