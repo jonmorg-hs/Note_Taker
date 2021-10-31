@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-[a link](https://notetakerhs.herokuapp.com/)
+[Note Taker: Get Started](https://notetakerhs.herokuapp.com/)
 
 # Table of Contents
 
