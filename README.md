@@ -14,7 +14,7 @@
 
 # Description
 
-This app was created all the user to input, save and delete notes using Express.js
+This application called Note Taker was created for writing and saving notes, using Node.js and Express.js back end for saving and retrieving note data from a JSON file.
 
 # Screenshots
 
