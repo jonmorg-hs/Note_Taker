@@ -36,6 +36,7 @@ app.get("*", function (req, res) {
 // Express POST Routes
 app.post("/api/notes/", function (req, res) {
   newNote = req.body;
+  res.status(200).send(newNote);
   // Get and Parse db file
   fs.readFile(__dirname + "/db/db.json", (err, data) => {
     var json = JSON.parse(data);
@@ -51,6 +52,7 @@ app.delete("/api/notes/:id", function (req, res) {
   // Get note id to be deleted from our request parameter (:id)
   let response = req.params;
   let id = response.id;
+  res.status(200).send(id);
   console.log(`Note id: ${id} marked for deletion`);
   // Read db file
   fs.readFile(__dirname + "/db/db.json", (err, data) => {

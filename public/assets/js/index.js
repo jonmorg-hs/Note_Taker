@@ -40,10 +40,14 @@ const saveNote = (note) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify(note),
-  }).then((response) => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  })
+    .then((res) => {
+      getAndRenderNotes();
+      renderActiveNote();
+    })
+    .catch((error) => {
+      console.error("Error in POST request:", error);
+    });
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -51,10 +55,14 @@ const deleteNote = (id) =>
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  })
+    .then((res) => {
+      getAndRenderNotes();
+      renderActiveNote();
+    })
+    .catch((error) => {
+      console.error("Error in DELETE request:", error);
+    });
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -74,10 +82,11 @@ const renderActiveNote = () => {
 
 const handleNoteSave = () => {
   const newNote = {
+    id: makeRandomID(),
     title: noteTitle.value,
     text: noteText.value,
   };
-  saveNote(newNote).then(() => {
+  saveNote(newNote).then(function () {
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -185,5 +194,15 @@ if (window.location.pathname === "/notes") {
   noteTitle.addEventListener("keyup", handleRenderSaveBtn);
   noteText.addEventListener("keyup", handleRenderSaveBtn);
 }
+
+const makeRandomID = () => {
+  let symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+  let randomStr = "note-";
+
+  for (var i = 0; i < 6; i++) {
+    randomStr += symbols.charAt(Math.floor(Math.random() * symbols.length));
+  }
+  return randomStr;
+};
 
 getAndRenderNotes();
